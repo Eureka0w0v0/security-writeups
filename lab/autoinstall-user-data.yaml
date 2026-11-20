@@ -1,0 +1,38 @@
+#cloud-config
+# Unattended install for the malware analysis base VM.
+# No passwords anywhere: the analyst account is SSH-key only, its password is locked.
+autoinstall:
+  version: 1
+  refresh-installer:
+    update: false
+  locale: en_US.UTF-8
+  keyboard:
+    layout: us
+  timezone: Etc/UTC   # set your own time zone
+  source:
+    id: ubuntu-server
+  network:
+    version: 2
+    ethernets:
+      lan:
+        match:
+          name: "en*"
+        dhcp4: true
+  storage:
+    layout:
+      name: direct
+  ssh:
+    install-server: true
+    allow-pw: false
+  user-data:
+    hostname: malware-lab
+    users:
+      - name: analyst
+        gecos: analyst
+        shell: /bin/bash
+        groups: [adm, sudo]
+        sudo: "ALL=(ALL) NOPASSWD:ALL"
+        lock_passwd: true
+        ssh_authorized_keys:
+          - "<your SSH public key>"
+  shutdown: poweroff

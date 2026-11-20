@@ -8,10 +8,11 @@ Write-ups from my independent defensive security practice by **Eureka0w0v0**: ma
 |---|---|
 | [`malware-analysis/`](malware-analysis/) | Reports on publicly available malware samples: static and dynamic analysis, IOCs, MITRE ATT&CK mapping, and detection rules |
 | [`picoctf/`](picoctf/) | Solutions to picoCTF (picoGym) practice challenges |
+| [`lab/`](lab/) | How the analysis VM is built and how samples are isolated, with the setup and sandbox scripts |
 
 ## Scope and ethics
 
-- **Isolated lab only.** Samples are executed only inside an isolated virtual machine with no route to my host or to the internet. The VM is reverted to a clean snapshot after every run.
+- **Isolated lab only.** Samples are handled only in a disposable clone of a dedicated analysis VM that has no internet access, and they execute only under emulation in an empty network namespace as an unprivileged user. Each clone is deleted after its case. Details: [`lab/`](lab/).
 - **Public samples only.** Every sample comes from a public repository such as MalwareBazaar and is referenced by its SHA-256 hash. **No live samples are stored in this repository.**
 - **Authorized targets only.** I test only systems I own or that a challenge platform explicitly provides for testing. Nothing here is aimed at third-party systems.
 - **Defensive output.** Reports focus on understanding behavior and detecting it (IOCs, YARA and Sigma rules), not on improving or redeploying malicious code.
