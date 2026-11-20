@@ -59,6 +59,9 @@ ip link add "$1" type dummy
 ip addr add "$2" dev "$1"
 ip link set "$1" up
 ip route add default dev "$1"
+# traffic.pcap stores interface indexes; record the index-to-name map of this namespace,
+# because a reader outside the namespace resolves the same indexes to other names.
+ip -o link > "$3/netns-links.txt"
 tcpdump -i any -nn -U -w "$3/traffic.pcap" 2>"$3/tcpdump.log" &
 sleep 1
 cd "$3/work"
