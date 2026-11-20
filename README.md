@@ -10,6 +10,12 @@ Write-ups from my independent defensive security practice by **Eureka0w0v0**: ma
 | [`picoctf/`](picoctf/) | Solutions to picoCTF (picoGym) practice challenges |
 | [`lab/`](lab/) | How the analysis VM is built and how samples are isolated, with the setup and sandbox scripts |
 
+## Write-ups
+
+| Date | Write-up | Highlights |
+|---|---|---|
+| 2026-11-20 | [Mirai LZRD (ARM): a DDoS-only build with a hard-coded C2](malware-analysis/2026-11-20_mirai-lzrd-arm.md) | String table decoded without execution, C2 recovered from code and confirmed in a sandboxed run, YARA rule tested against 107k clean files |
+
 ## Scope and ethics
 
 - **Isolated lab only.** Samples are handled only in a disposable clone of a dedicated analysis VM that has no internet access, and they execute only under emulation in an empty network namespace as an unprivileged user. Each clone is deleted after its case. Details: [`lab/`](lab/).
