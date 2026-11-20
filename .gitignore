@@ -1,0 +1,31 @@
+# Never commit live malware, archives, or raw captures.
+# Only write-ups (Markdown) and text detection rules belong in this repository.
+samples/
+*.exe
+*.dll
+*.sys
+*.scr
+*.msi
+*.bin
+*.elf
+*.apk
+*.jar
+*.ps1
+*.vbs
+*.js
+*.hta
+*.lnk
+*.iso
+*.img
+*.zip
+*.7z
+*.rar
+*.gz
+*.pcap
+*.pcapng
+*.dmp
+*.mem
+*.vmem
+
+# macOS
+.DS_Store
