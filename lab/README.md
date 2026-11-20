@@ -16,7 +16,7 @@ Samples are never placed on the base VM.
 ## Lifecycle of a case
 
 1. **Clone.** In UTM, clone `malware-lab-base` to `lab-<case>`.
-2. **Fetch.** With the clone on *Shared Network*, download the password-protected archive from MalwareBazaar into `/srv/cases/<case>/`. Do not extract it yet. Shut the clone down.
+2. **Fetch.** With the clone on *Shared Network*, run [`fetch-sample.sh`](fetch-sample.sh) to download the password-protected archive from MalwareBazaar into `/srv/cases/<case>/`, together with its metadata. The API key is typed in without echo and never stored. Do not extract the archive yet. Shut the clone down.
 3. **Cut the internet.** Switch the clone to *Host Only* (UTM blocks WAN traffic in this mode), then boot it. From here on the VM cannot reach the internet.
 4. **Static analysis.** Extract the archive and inspect the sample without running it.
 5. **Dynamic analysis.** Run it only through [`run-sample.sh`](run-sample.sh):
